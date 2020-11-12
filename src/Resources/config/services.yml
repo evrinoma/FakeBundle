@@ -7,10 +7,11 @@ services:
 
   evrinoma.fake.api.controller:
     class: Evrinoma\FakeBundle\Controller\FakeApiController
-
-  Evrinoma\FakeBundle\Controller\FakeApiController:
-    alias: evrinoma.fake.api.controller
     arguments:
       - '@jms_serializer'
       - '@evrinoma.fake.manager'
     autowire: true
+
+  Evrinoma\FakeBundle\Controller\FakeApiController:
+    alias: evrinoma.fake.api.controller
+
