@@ -18,11 +18,19 @@ final class FakeManager extends AbstractBaseManager implements FakeManagerInterf
 {
     use RestTrait;
 
+//region SECTION: Fields
     /**
      * @var array
      */
     private $services = [];
 
+    /**
+     * @var array
+     */
+    private $entitys = [];
+//endregion Fields
+
+//region SECTION: Constructor
     /**
      * FakeManager constructor.
      */
@@ -40,30 +48,38 @@ final class FakeManager extends AbstractBaseManager implements FakeManagerInterf
         $this->services[Model::NEKENG][] = (new Service(Model::NEKENG, Model::LDAP, '172.20.1.20', ['VERSION' => '2010', 'cloud' => 'false']))->setActiveToBlocked();
         $this->services[Model::NEKENG][] = new Service(Model::NEKENG, Model::MAIL, '172.16.45.4', []);
     }
+//endregion Constructor
 
-    public function getStatus(string $type):array
+//region SECTION: Getters/Setters
+    public function getStatus(string $type): array
     {
 
         $type = 'User';
 
 
-
-
         return [];
     }
 
-    public function getEntityTypes():array
+    public function getEntityTypes(): array
     {
-        return ;
+        return [
+            Model::USER,
+            Model::CONTRACT,
+            Model::PROJECT,
+            Model::STAGE,
+            Model::ESTIMATE,
+            Model::CODE,
+        ];
     }
 
-    public function getService(string $server):array
+    public function getService(string $server): array
     {
-        return array_key_exists($server, $this->services)? $this->services[$server] : [];
+        return array_key_exists($server, $this->services) ? $this->services[$server] : $this->services;
     }
 
     public function getRestStatus(): int
     {
         return $this->status;
     }
+//endregion Getters/Setters
 }

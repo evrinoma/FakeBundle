@@ -6,10 +6,19 @@ namespace Evrinoma\FakeBundle\Fake;
 
 abstract class Model
 {
-    const ITE_NG = 'ite-ng';
-    const KZKT   = 'kzkt';
-    const NEKENG = 'nekeng';
-    const SOAP   = 'soap';
-    const MAIL   = 'mail';
-    const LDAP   = 'ldap';
+//region SECTION: Fields
+    public const ITE_NG = 'ite-ng';
+    public const KZKT   = 'kzkt';
+    public const NEKENG = 'nekeng';
+    public const SOAP   = 'soap';
+    public const MAIL   = 'mail';
+    public const LDAP   = 'ldap';
+
+    public const USER     = 'User';
+    public const CONTRACT = 'ContrAgent';
+    public const PROJECT  = 'Project';
+    public const STAGE    = 'Stage';
+    public const ESTIMATE = 'Estimate';
+    public const CODE     = 'Code';
+//endregion Fields
 }
