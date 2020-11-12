@@ -14,4 +14,6 @@ services:
 
   Evrinoma\FakeBundle\Controller\FakeApiController:
     alias: evrinoma.fake.api.controller
+    public: true
+    
 
