@@ -13,4 +13,17 @@ use Evrinoma\UtilsBundle\Rest\RestInterface;
  */
 interface FakeManagerInterface extends RestInterface, BaseInterface
 {
+    /**
+     * @param string $type
+     *
+     * @return array
+     */
+    public function getStatus(string $type):array;
+
+    /**
+     * @param string $server
+     *
+     * @return array
+     */
+    public function getService(string $server):array;
 }
