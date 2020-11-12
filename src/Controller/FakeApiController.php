@@ -53,5 +53,29 @@ final class FakeApiController extends AbstractApiController
     {
         return $this->json($this->fakeManager->setRestSuccessOk()->getStatus(), $this->fakeManager->getRestStatus());
     }
+
+    /**
+     * @Rest\Get("/api/fake/entity", name="api_fake_entity")
+     * @SWG\Get(tags={"fake"})
+     * @SWG\Response(response=200,description="Get fake entity")
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function getEntityTypesAction()
+    {
+        return $this->json($this->fakeManager->setRestSuccessOk()->getStatus(), $this->fakeManager->getRestStatus());
+    }
+
+    /**
+     * @Rest\Get("/api/fake/services", name="api_fake_service")
+     * @SWG\Get(tags={"fake"})
+     * @SWG\Response(response=200,description="Get fake service")
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function getServiceAction()
+    {
+        return $this->json($this->fakeManager->setRestSuccessOk()->getStatus(), $this->fakeManager->getRestStatus());
+    }
 //endregion Public
 }
