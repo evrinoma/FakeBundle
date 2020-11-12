@@ -63,7 +63,7 @@ final class FakeApiController extends AbstractApiController
      */
     public function getEntityTypesAction()
     {
-        return $this->json($this->fakeManager->setRestSuccessOk()->getEntityTypes()->getStatus(), $this->fakeManager->getRestStatus());
+        return $this->json($this->fakeManager->setRestSuccessOk()->getEntityTypes(), $this->fakeManager->getRestStatus());
     }
 
     /**
