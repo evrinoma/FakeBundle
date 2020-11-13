@@ -3,6 +3,10 @@
 
 namespace Evrinoma\FakeBundle\Fake;
 
+use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\VirtualProperty;
+use JMS\Serializer\Annotation\SerializedName;
+
 
 final class Record
 {
@@ -25,6 +29,7 @@ final class Record
     private $message;
     /**
      * @var \stdClass
+     * @Exclude
      */
     private $status;
     /**
@@ -62,6 +67,17 @@ final class Record
 //endregion Constructor
 
 //region SECTION: Getters/Setters
+
+    /**
+     * @VirtualProperty
+     * @SerializedName("status")
+     * @return array
+     */
+    public function serializeStatus():array
+    {
+        return  json_decode(json_encode($this->status), true);
+    }
+
     /**
      * @return int
      */

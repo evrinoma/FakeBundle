@@ -18,7 +18,7 @@ interface FakeManagerInterface extends RestInterface, BaseInterface
      *
      * @return array
      */
-    public function getlogs(string $entityType):array;
+    public function getlog(string $entityType):array;
 
     /**
      * @return array

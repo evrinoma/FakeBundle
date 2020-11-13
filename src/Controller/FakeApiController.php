@@ -43,15 +43,15 @@ final class FakeApiController extends AbstractApiController
 
 //region SECTION: Public
     /**
-     * @Rest\Get("/api/fake/status", name="api_fake_status")
+     * @Rest\Get("/api/fake/log", name="api_fake_log")
      * @SWG\Get(tags={"fake"})
-     * @SWG\Response(response=200,description="Get fake status")
+     * @SWG\Response(response=200,description="Get fake log")
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getStatusAction()
+    public function getLogsAction()
     {
-        return $this->json($this->fakeManager->setRestSuccessOk()->getStatus(), $this->fakeManager->getRestStatus());
+        return $this->json($this->fakeManager->setRestSuccessOk()->getlog(\Evrinoma\FakeBundle\Fake\Model::CODE), $this->fakeManager->getRestStatus());
     }
 
     /**

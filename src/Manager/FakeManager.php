@@ -128,7 +128,7 @@ final class FakeManager extends AbstractBaseManager implements FakeManagerInterf
         $curDate = new \DateTime($date);
         for ($i = 0; $i < $days; $i++) {
 
-            $r      = random_int(0, 2);
+            $r    = random_int(0, 2);
             $type = ($r == 2 ? 'static' : ($r == 1 ? 'dynamic' : 'unknown'));
 
             $r      = random_int(0, 2);
@@ -158,7 +158,7 @@ final class FakeManager extends AbstractBaseManager implements FakeManagerInterf
     {
         foreach ($this->entitys as $entity => $values) {
             foreach ($values as $value) {
-            $this->logs[$entity][$value] = $this->genereateLog($entity, random_int(0, 20), "2020-09-01");
+                $this->logs[$entity][$value] = $this->genereateLog($entity, random_int(0, 20), "2020-09-01");
             }
         }
 
@@ -167,13 +167,9 @@ final class FakeManager extends AbstractBaseManager implements FakeManagerInterf
 //endregion Private
 
 //region SECTION: Getters/Setters
-    public function getlogs(string $entityType): array
+    public function getlog(string $entityType): array
     {
-
-        $type = 'User';
-
-
-        return [];
+        return array_key_exists($entityType, $this->logs) ? $this->logs[$entityType] : [];
     }
 
     /**
