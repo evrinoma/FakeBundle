@@ -3,6 +3,7 @@
 
 namespace Evrinoma\FakeBundle\Manager;
 
+use Evrinoma\FakeBundle\Dto\FakeDto;
 use Evrinoma\UtilsBundle\Manager\BaseInterface;
 use Evrinoma\UtilsBundle\Rest\RestInterface;
 
@@ -14,11 +15,11 @@ use Evrinoma\UtilsBundle\Rest\RestInterface;
 interface FakeManagerInterface extends RestInterface, BaseInterface
 {
     /**
-     * @param string $entityType
+     * @param FakeDto $dto
      *
      * @return array
      */
-    public function getlog(string $entityType):array;
+    public function getlog(FakeDto $dto):array;
 
     /**
      * @return array
@@ -31,11 +32,9 @@ interface FakeManagerInterface extends RestInterface, BaseInterface
     public function getGroups(): array;
 
     /**
-     * @param string|null $type
-     *
-     * @param string|null $entityType
+     * @param FakeDto $dto
      *
      * @return array
      */
-    public function getService(string $type, string $entityType): array;
+    public function getService(FakeDto $dto): array;
 }

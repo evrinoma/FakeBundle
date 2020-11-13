@@ -3,6 +3,7 @@
 namespace Evrinoma\FakeBundle\Manager;
 
 
+use Evrinoma\FakeBundle\Dto\FakeDto;
 use Evrinoma\FakeBundle\Fake\Log;
 use Evrinoma\FakeBundle\Fake\Model;
 use Evrinoma\FakeBundle\Fake\Record;
@@ -167,9 +168,14 @@ final class FakeManager extends AbstractBaseManager implements FakeManagerInterf
 //endregion Private
 
 //region SECTION: Getters/Setters
-    public function getlog(string $entityType): array
+    /**
+     * @param FakeDto $dto
+     *
+     * @return array
+     */
+    public function getlog(FakeDto $dto): array
     {
-        return array_key_exists($entityType, $this->logs) ? $this->logs[$entityType] : [];
+        return ($dto->hasEntityType() && array_key_exists($dto->getEntityType(), $this->logs)) ? $this->logs[$dto->getEntityType()] : [];
     }
 
     /**
@@ -200,18 +206,21 @@ final class FakeManager extends AbstractBaseManager implements FakeManagerInterf
     }
 
     /**
-     * @param string      $group
-     * @param string|null $entityType
+     * @param FakeDto $dto
      *
      * @return array
      */
-    public function getService(string $group, string $entityType = null): array
+    public function getService(FakeDto $dto): array
     {
-        if (!$entityType) {
-            $service = array_key_exists($group, $this->services) ? $this->services[$group] : $this->services;
+        if ($dto->hasEntityType()) {
+            $keys    = array_key_exists($dto->getEntityType(), $this->entitys) ? $this->entitys[$dto->getEntityType()] : [];
+            if ($dto->hasGroup() && in_array($dto->getGroup(), $keys)) {
+                $service = $this->services[$dto->getGroup()];
+            } else {
+                $service = array_intersect_key($this->services, array_flip($keys));
+            }
         } else {
-            $keys    = array_key_exists($entityType, $this->entitys) ? $this->entitys[$entityType] : [];
-            $service = array_intersect_key($this->services, array_flip($keys));
+            $service = ($dto->hasGroup() && array_key_exists($dto->getGroup(), $this->services)) ? $this->services[$dto->getGroup()] : $this->services;
         }
 
         return $service;
