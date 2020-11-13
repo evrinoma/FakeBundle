@@ -55,7 +55,19 @@ final class FakeApiController extends AbstractApiController
     }
 
     /**
-     * @Rest\Get("/api/fake/entity", name="api_fake_entity")
+     * @Rest\Get("/api/fake/services", name="api_fake_service")
+     * @SWG\Get(tags={"fake"})
+     * @SWG\Response(response=200,description="Get fake service")
+     *
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function getServiceAction()
+    {
+        return $this->json($this->fakeManager->setRestSuccessOk()->getService(\Evrinoma\FakeBundle\Fake\Model::ITE_NG, \Evrinoma\FakeBundle\Fake\Model::CODE), $this->fakeManager->getRestStatus());
+    }
+
+    /**
+     * @Rest\Get("/api/fake/entity_type", name="api_fake_entity_type")
      * @SWG\Get(tags={"fake"})
      * @SWG\Response(response=200,description="Get fake entity")
      *
@@ -67,15 +79,15 @@ final class FakeApiController extends AbstractApiController
     }
 
     /**
-     * @Rest\Get("/api/fake/services", name="api_fake_service")
+     * @Rest\Get("/api/fake/group", name="api_fake_group")
      * @SWG\Get(tags={"fake"})
-     * @SWG\Response(response=200,description="Get fake service")
+     * @SWG\Response(response=200,description="Get fake group")
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getServiceAction()
+    public function getTypesAction()
     {
-        return $this->json($this->fakeManager->setRestSuccessOk()->getStatus(), $this->fakeManager->getRestStatus());
+        return $this->json($this->fakeManager->setRestSuccessOk()->getGroups(), $this->fakeManager->getRestStatus());
     }
 //endregion Public
 }

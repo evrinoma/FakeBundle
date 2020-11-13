@@ -14,11 +14,11 @@ use Evrinoma\UtilsBundle\Rest\RestInterface;
 interface FakeManagerInterface extends RestInterface, BaseInterface
 {
     /**
-     * @param string $type
+     * @param string $entityType
      *
      * @return array
      */
-    public function getStatus(string $type):array;
+    public function getlogs(string $entityType):array;
 
     /**
      * @return array
@@ -26,9 +26,16 @@ interface FakeManagerInterface extends RestInterface, BaseInterface
     public function getEntityTypes():array;
 
     /**
-     * @param string $server
+     * @return array
+     */
+    public function getGroups(): array;
+
+    /**
+     * @param string|null $type
+     *
+     * @param string|null $entityType
      *
      * @return array
      */
-    public function getService(string $server):array;
+    public function getService(string $type, string $entityType): array;
 }
