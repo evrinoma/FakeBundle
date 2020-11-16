@@ -1,0 +1,3 @@
+fake_api:
+  resource: "@EvrinomaFakeBundle/Controller/FakeApiController.php"
+  type: annotation

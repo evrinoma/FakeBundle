@@ -1,0 +1,3 @@
+fakeapi:
+  resource: "@EvrinomaFakeBundle/Resources/config/routing/api.yml"
+  prefix: evrinoma
