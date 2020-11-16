@@ -1,0 +1,39 @@
+services:
+  evrinoma.fake.manager:
+    class: Evrinoma\FakeBundle\Manager\FakeManager
+
+  Evrinoma\FakeBundle\Manager\FakeManager:
+    alias: evrinoma.fake.manager
+
+  evrinoma.fake.api.controller:
+    class: Evrinoma\FakeBundle\Controller\FakeApiController
+    arguments:
+      - '@jms_serializer'
+      - '@request_stack'
+      - '@evrinoma.dto.factory'
+      - '@evrinoma.fake.manager'
+    autowire: true
+
+  Evrinoma\FakeBundle\Controller\FakeApiController:
+    alias: evrinoma.fake.api.controller
+    public: true
+    
+  evrinoma.fake.form.rest.entity_type:
+    class: Evrinoma\FakeBundle\Form\Rest\EntityType
+    arguments:
+      - '@evrinoma.fake.manager'
+    tags: { - name: form.type }
+
+  Evrinoma\FakeBundle\Form\Rest\EntityType:
+    alias: evrinoma.fake.form.rest.entity_type
+    public: true
+
+  evrinoma.fake.form.rest.group:
+    class: Evrinoma\FakeBundle\Form\Rest\GroupType
+    arguments:
+      - '@evrinoma.fake.manager'
+    tags: { - name: form.type }
+
+  Evrinoma\FakeBundle\Form\Rest\GroupType:
+    alias: evrinoma.fake.form.rest.group
+    public: true
