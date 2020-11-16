@@ -62,7 +62,7 @@ final class FakeApiController extends AbstractApiController
 
 //region SECTION: Public
     /**
-     * @Rest\Get("/api/fake/log", name="api_fake_log")
+     * @Rest\Get("/api/fake/log", name="api_fake_log", options={"expose"=true})
      * @SWG\Get(tags={"fake"})
      * @SWG\Response(response=200,description="Get fake log")
      * @SWG\Parameter(
@@ -85,7 +85,7 @@ final class FakeApiController extends AbstractApiController
     }
 
     /**
-     * @Rest\Get("/api/fake/services", name="api_fake_service")
+     * @Rest\Get("/api/fake/services", name="api_fake_service", options={"expose"=true})
      * @SWG\Get(tags={"fake"})
      * @SWG\Response(response=200,description="Get fake service")
      * @SWG\Parameter(
@@ -119,7 +119,7 @@ final class FakeApiController extends AbstractApiController
     }
 
     /**
-     * @Rest\Get("/api/fake/entity_type", name="api_fake_entity_type")
+     * @Rest\Get("/api/fake/entity_type", name="api_fake_entity_type", options={"expose"=true})
      * @SWG\Get(tags={"fake"})
      * @SWG\Response(response=200,description="Get fake entity")
      *
@@ -131,7 +131,7 @@ final class FakeApiController extends AbstractApiController
     }
 
     /**
-     * @Rest\Get("/api/fake/group", name="api_fake_group")
+     * @Rest\Get("/api/fake/group", name="api_fake_group", options={"expose"=true})
      * @SWG\Get(tags={"fake"})
      * @SWG\Response(response=200,description="Get fake group")
      *
