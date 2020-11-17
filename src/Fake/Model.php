@@ -14,7 +14,7 @@ abstract class Model
     public const MAIL   = 'mail';
     public const LDAP   = 'ldap';
 
-    public const USER     = 'User';
+    public const USER     = 'user.yml';
     public const CONTRACT = 'ContrAgent';
     public const PROJECT  = 'Project';
     public const STAGE    = 'Stage';
